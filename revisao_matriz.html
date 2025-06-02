@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .container{
+        background-color: blue;
+        text-align: center;
+        width: 300px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    .item{
+        background-color: red;
+        width: 50px;
+        margin: 5px;
+    }
+</style>
+
+<body>
+    <div class="container" id="div_matriz">
+        <!-- <div class="item">x</div>  -->
+    </div>
+
+    <button onclick="montarMatriz()">montar Matriz</button> <br>
+
+    <input type="text" id="ipt_linha" placeholder="LINHA">
+    <input type="text" id="ipt_coluna" placeholder="COLUNA">
+
+    <button onclick="consultarMatriz()">consultar matriz</button>
+
+    <div id="resposta"></div>
+
+</body>
+<script>
+    let matriz = [];
+
+
+    function montarMatriz(){
+        let qtdLinhas = 3;
+        let qtdColunas = 3;
+
+        let valorInicial = 5;
+
+        for(linhas = 0; linhas < qtdLinhas; linhas++){
+            matriz[linhas] = [];
+            for(let colunas = 0; colunas < qtdColunas; colunas++){
+                matriz[linhas][colunas] = valorInicial
+                valorInicial += 5
+
+                div_matriz.innerHTML += `<div class="item"> ${matriz[linhas][colunas]}</div>`
+
+            }
+        }
+        console.log(matriz)
+    }
+
+    function consultarMatriz(){
+        let linha = Number(ipt_linha.value);
+        let coluna = Number(ipt_coluna.value);
+
+        let valor = matriz[linha][coluna];
+
+        resposta.innerHTML = `o valor da linha ${linha} e da coluna ${coluna} é ${valor}`
+    }
+
+</script>
+</html>
